@@ -4,6 +4,7 @@ import 'package:food_app/core/custom_assets/custom_images/custom_images.dart';
 import 'package:food_app/core/routes/app_routes.dart';
 import 'package:food_app/core/static_string/static_strings.dart';
 import 'package:food_app/core/utils/colors/app_colors.dart';
+import 'package:food_app/presentation/data/model/food_model.dart';
 
 import 'package:get/route_manager.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -17,11 +18,11 @@ class SliderDesign extends StatefulWidget {
 
 int currentIndex = 0;
 
-final List<String> sliderImg = [
-  CustomImages.burger,
-  CustomImages.pasta,
-  CustomImages.pizza,
-  CustomImages.icecream,
+final List<FoodModels> sliderItems = [
+  FoodModels(image: CustomImages.burger, name: "Beef Burger", price: "\$ 7"),
+  FoodModels(image: CustomImages.pizza, name: "Pizza", price: "\$ 20"),
+  FoodModels(image: CustomImages.pasta, name: "Pasta", price: "\$ 10"),
+  FoodModels(image: CustomImages.icecream, name: "Ice Cream", price: "\$ 5"),
 ];
 
 class _SliderDesignState extends State<SliderDesign> {
@@ -44,7 +45,8 @@ class _SliderDesignState extends State<SliderDesign> {
               });
             },
           ),
-          items: sliderImg.map((i) {
+
+          items: sliderItems.map((i) {
             return Builder(
               builder: (BuildContext context) {
                 return Container(
@@ -56,7 +58,7 @@ class _SliderDesignState extends State<SliderDesign> {
                     child: Stack(
                       children: [
                         Image.asset(
-                          i,
+                          i.image,
                           fit: BoxFit.cover,
                           height: 180,
                           width: double.infinity,
@@ -86,7 +88,7 @@ class _SliderDesignState extends State<SliderDesign> {
                                 onTap: () {
                                   Get.toNamed(
                                     AppRoutes.orderpage,
-                                    arguments: sliderImg[currentIndex],
+                                    arguments: i.toMap(),
                                   );
                                 },
                                 child: Container(
@@ -126,8 +128,8 @@ class _SliderDesignState extends State<SliderDesign> {
 
         AnimatedSmoothIndicator(
           activeIndex: currentIndex, // PageController
-          count: sliderImg.length,
-          effect: SwapEffect(
+          count: sliderItems.length,
+          effect: WormEffect(
             dotColor: Colors.white,
             activeDotColor: Colors.deepOrange,
             spacing: 10,

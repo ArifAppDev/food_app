@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/core/custom_assets/custom_lottie_animation/lottie_animation.dart';
 import 'package:food_app/core/utils/colors/app_colors.dart';
+import 'package:food_app/presentation/data/model/food_model.dart';
 
 import 'package:get/route_manager.dart';
 import 'package:lottie/lottie.dart';
@@ -10,8 +11,8 @@ class OrderPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Receive the passed image
-    final String selectedImage = Get.arguments as String;
+    final FoodModels item = FoodModels.fromMap(Get.arguments);
+
     return Scaffold(
       backgroundColor: AppColors.black,
       appBar: AppBar(
@@ -28,43 +29,82 @@ class OrderPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(
-              height: 300,
-              width: double.infinity,
-              child: Image.asset(selectedImage, fit: BoxFit.cover),
-            ),
-
-            SizedBox(height: 30),
+            SizedBox(height: 20),
 
             Lottie.asset(LottieAnimation.order, height: 250, width: 300),
-
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              child: GestureDetector(
-                onTap: () {},
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: AppColors.white,
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                  ),
-                  height: 50,
-                  width: double.infinity,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "Add to Cart",
-                        style: TextStyle(
-                          fontSize: 18,
-                          color: AppColors.black,
-                          fontWeight: FontWeight.w600,
+              padding: const EdgeInsets.all(10),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Color(0xff262626),
+                  borderRadius: BorderRadius.all(Radius.circular(18)),
+                ),
+                height: 110,
+                width: double.infinity,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadiusGeometry.circular(18),
+                      child: SizedBox(
+                        child: Image.asset(
+                          item.image,
+                          fit: BoxFit.cover,
+                          height: 110,
+                          width: 120,
                         ),
                       ),
-                      SizedBox(width: 20),
+                    ),
 
-                      Icon(Icons.shopping_cart, color: Colors.black),
-                    ],
-                  ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 15,
+                        horizontal: 20,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+
+                        children: [
+                          Row(
+                            children: [
+                              Text(
+                                item.name,
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: AppColors.white,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+
+                              SizedBox(width: 15),
+
+                              Icon(Icons.star, color: Colors.yellow, size: 15),
+                              SizedBox(width: 5),
+                              Text(
+                                "4.5",
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: AppColors.white,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ],
+                          ),
+
+                          SizedBox(height: 20),
+
+                          Text(
+                            "Price: ${item.price}",
+                            style: const TextStyle(
+                              color: AppColors.white,
+                              fontSize: 18,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
