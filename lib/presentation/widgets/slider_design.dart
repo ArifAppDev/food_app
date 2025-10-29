@@ -4,32 +4,38 @@ import 'package:food_app/core/custom_assets/custom_images/custom_images.dart';
 import 'package:food_app/core/routes/app_routes.dart';
 import 'package:food_app/core/static_string/static_strings.dart';
 import 'package:food_app/core/utils/colors/app_colors.dart';
+import 'package:food_app/presentation/controller/slider_controller.dart';
 import 'package:food_app/presentation/data/model/food_model.dart';
+import 'package:get/get.dart';
 
-import 'package:get/route_manager.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class SliderDesign extends StatefulWidget {
+class SliderDesign extends StatelessWidget {
   const SliderDesign({super.key});
 
   @override
-  State<SliderDesign> createState() => _SliderDesignState();
-}
-
-int currentIndex = 0;
-
-final List<FoodModels> sliderItems = [
-  FoodModels(image: CustomImages.burger, name: "Beef Burger", price: "\$ 7"),
-  FoodModels(image: CustomImages.pizza, name: "Pizza", price: "\$ 20"),
-  FoodModels(image: CustomImages.pasta, name: "Pasta", price: "\$ 10"),
-  FoodModels(image: CustomImages.icecream, name: "Ice Cream", price: "\$ 5"),
-];
-
-class _SliderDesignState extends State<SliderDesign> {
-  final CarouselSliderController carouselController =
-      CarouselSliderController();
-  @override
   Widget build(BuildContext context) {
+    final List<FoodModels> sliderItems = [
+      FoodModels(
+        image: CustomImages.burger,
+        name: "Beef Burger",
+        price: "\$ 7",
+      ),
+      FoodModels(image: CustomImages.pizza, name: "Pizza", price: "\$ 20"),
+      FoodModels(image: CustomImages.pasta, name: "Pasta", price: "\$ 10"),
+      FoodModels(
+        image: CustomImages.icecream,
+        name: "Ice Cream",
+        price: "\$ 5",
+      ),
+    ];
+
+    final CarouselSliderController carouselController =
+        CarouselSliderController();
+    // dependency injection
+
+    final SliderController sliderController = Get.put(SliderController());
+
     return Column(
       children: [
         SizedBox(height: 50),
@@ -40,9 +46,7 @@ class _SliderDesignState extends State<SliderDesign> {
             autoPlay: true,
             autoPlayCurve: Curves.fastOutSlowIn,
             onPageChanged: (index, reason) {
-              setState(() {
-                currentIndex = index;
-              });
+              sliderController.updateIndex(index);
             },
           ),
 
@@ -126,16 +130,18 @@ class _SliderDesignState extends State<SliderDesign> {
 
         SizedBox(height: 30),
 
-        AnimatedSmoothIndicator(
-          activeIndex: currentIndex, // PageController
-          count: sliderItems.length,
-          effect: WormEffect(
-            dotColor: Colors.white,
-            activeDotColor: Colors.deepOrange,
-            spacing: 10,
+        Obx(
+          () => AnimatedSmoothIndicator(
+            activeIndex: sliderController.currentIndex.value, // PageController
+            count: sliderItems.length,
+            effect: WormEffect(
+              dotColor: Colors.white,
+              activeDotColor: Colors.deepOrange,
+              spacing: 10,
+            ),
+            // your preferred effect
+            onDotClicked: (index) {},
           ),
-          // your preferred effect
-          onDotClicked: (index) {},
         ),
       ],
     );
