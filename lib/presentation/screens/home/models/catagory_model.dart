@@ -1,3 +1,5 @@
+// catagory model import 'package:food_app/core/custom_assets/custom_images/custom_images.dart';
+
 import 'package:food_app/core/custom_assets/custom_images/custom_images.dart';
 
 final List<Map> catagorys = [

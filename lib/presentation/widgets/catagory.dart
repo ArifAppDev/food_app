@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/core/static_string/static_strings.dart';
 import 'package:food_app/core/utils/colors/app_colors.dart';
-import 'package:food_app/presentation/home/model/catagory_model.dart';
+
+import 'package:food_app/presentation/screens/home/models/catagory_model.dart';
 
 class Catagory extends StatelessWidget {
   const Catagory({super.key});

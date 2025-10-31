@@ -1,6 +1,5 @@
-import 'package:food_app/presentation/home/screen/home_page.dart';
-
-import 'package:food_app/presentation/pages/order_page.dart';
+import 'package:food_app/presentation/screens/home/views/home_page.dart';
+import 'package:food_app/presentation/screens/order/order_page.dart';
 
 import 'package:get/get_navigation/src/routes/get_route.dart';
 

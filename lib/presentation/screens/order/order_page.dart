@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/core/custom_assets/custom_lottie_animation/lottie_animation.dart';
 import 'package:food_app/core/utils/colors/app_colors.dart';
-import 'package:food_app/presentation/data/model/food_model.dart';
+
+import 'package:food_app/presentation/screens/home/models/food_model.dart';
 
 import 'package:get/route_manager.dart';
 import 'package:lottie/lottie.dart';

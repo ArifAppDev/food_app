@@ -4,7 +4,8 @@ import 'package:food_app/core/custom_assets/custom_icons/custom_icons.dart';
 
 import 'package:food_app/core/static_string/static_strings.dart';
 import 'package:food_app/core/utils/colors/app_colors.dart';
-import 'package:food_app/presentation/home/model/discount_model.dart';
+
+import 'package:food_app/presentation/screens/home/models/discount_model.dart';
 
 class TopDiscount extends StatelessWidget {
   const TopDiscount({super.key});

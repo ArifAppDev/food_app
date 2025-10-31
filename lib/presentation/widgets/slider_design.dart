@@ -4,8 +4,9 @@ import 'package:food_app/core/custom_assets/custom_images/custom_images.dart';
 import 'package:food_app/core/routes/app_routes.dart';
 import 'package:food_app/core/static_string/static_strings.dart';
 import 'package:food_app/core/utils/colors/app_colors.dart';
-import 'package:food_app/presentation/controller/slider_controller.dart';
-import 'package:food_app/presentation/data/model/food_model.dart';
+import 'package:food_app/presentation/screens/home/controllers/slider_controller.dart';
+import 'package:food_app/presentation/screens/home/models/food_model.dart';
+
 import 'package:get/get.dart';
 
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
