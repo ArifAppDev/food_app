@@ -6,8 +6,8 @@ import 'package:food_app/presentation/widgets/search_box.dart';
 import 'package:food_app/presentation/widgets/slider_design.dart';
 import 'package:food_app/presentation/widgets/top_discount.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
