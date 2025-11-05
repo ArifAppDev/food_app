@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:food_app/core/custom_assets/custom_icons/custom_icons.dart';
-import 'package:food_app/core/static_string/static_strings.dart';
+import 'package:food_app/utils/static_string/static_strings.dart';
 
 class SearchBox extends StatelessWidget {
   const SearchBox({super.key});

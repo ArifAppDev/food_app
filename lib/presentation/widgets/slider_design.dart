@@ -2,10 +2,11 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:food_app/core/custom_assets/custom_images/custom_images.dart';
 import 'package:food_app/core/routes/app_routes.dart';
-import 'package:food_app/core/static_string/static_strings.dart';
-import 'package:food_app/core/utils/colors/app_colors.dart';
+
 import 'package:food_app/presentation/screens/home/controllers/slider_controller.dart';
 import 'package:food_app/presentation/screens/home/models/food_model.dart';
+import 'package:food_app/utils/app_color/app_colors.dart';
+import 'package:food_app/utils/static_string/static_strings.dart';
 
 import 'package:get/get.dart';
 
